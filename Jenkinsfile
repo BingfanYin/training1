@@ -55,14 +55,13 @@ pipeline {
 
 	}
 
-		stage('Deploy Image') {
-			steps{    
-				script {
-					sh "./deploy.sh bingfandocker/grp2-image:${env.BUILD_ID} ${env.BUILD_ID}"
-					currentBuild.result = 'SUCCESS'
-				}
+	stage('Deploy Image') {
+		steps{    
+			script {
+				sh "./deploy.sh bingfandocker/grp2-image:${env.BUILD_ID} ${env.BUILD_ID}"
+				currentBuild.result = 'SUCCESS'
 			}
-		} 
-
+		}
+	} 
 }
 
