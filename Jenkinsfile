@@ -13,21 +13,21 @@ pipeline {
 	      steps{
 	        script {
 	          sh "ls -l"
-	          sh "grp2 echo 2222"
+	          sh "echo grp2 2222"
 	        }
 	      }
 	    }
 	    stage('Testing image') {
 	      steps{
 	        script {
-	          sh "grp2 echo 3333"
+	          sh "echo grp2 3333"
 	        }
 	      }
 	    }
 		stage('Pushing Image') {
 	      steps{
 	        script {
-	          sh "grp2 echo 4444"
+	          sh "echo grp 4444"
 	        }
 	      }
 		}     
