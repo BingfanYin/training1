@@ -1,6 +1,6 @@
 #!/bin/sh
 
-qq=$(docker run --rm --net tmp-net curlimages/curl:7.71.1 -s http://tmp-web:8123|grep -c "App Version: $1")
+qq=$(docker run --rm --net tmp-net curlimages/curl:7.71.1 -s http://grp2-web:8123|grep -c "App Version: $1")
 
 # docker container rm -f tmp-web >> log.txt 2>&1
 
