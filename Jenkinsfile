@@ -38,13 +38,16 @@ pipeline {
 	        }
 	      }
 	    }
-		stage('Pushing Image') {
-	      steps{
-	        script {
-	          sh "echo 5555"
-	        }
-	      }
-		}     
+	stage('Pushing Image') {
+			steps{    
+				script {
+					docker.withRegistry( '', registryCredential ) {
+					dockerImage.push()
+					}
+				}
+			}
+		} 
+
 	}
 }
 

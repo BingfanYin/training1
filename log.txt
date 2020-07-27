@@ -1,0 +1,8 @@
+Error response from daemon: network with name tmp-net already exists
+Error: No such container: grp2-web
+"docker run" requires at least 1 argument.
+See 'docker run --help'.
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run a command in a new container
