@@ -9,28 +9,34 @@ pipeline {
 	        git 'https://github.com/schogini/HOOK-TEST-P02-GITHUB.git'
 	      }
 	    }
-	    stage('Building image') {
+	    stage('Build Image') {
 	      steps{
 	        script {
-	          sh "ls -l"
-		  sh "docker build -t grp2-web ."
-	          sh "docker run -d -p 443:8123 grp2-web"
+	          sh "docker build -t grp2-web ."
+	        }
+	      }
+	    }
+	    stage('Deploy Test Server') {
+	      steps{
+	        script {
+	          sh "./deploy-test.sh ${env.BUILD_ID} grp2-web"
 	        }
 	      }
 	    }
 	    stage('Testing image') {
 	      steps{
 	        script {
-	          sh "echo grp2 3333"
+	          sh "echo 3333"
 	        }
 	      }
 	    }
 		stage('Pushing Image') {
 	      steps{
 	        script {
-	          sh "echo grp 4444"
+	          sh "echo 5555"
 	        }
 	      }
 		}     
 	}
 }
+

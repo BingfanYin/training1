@@ -1,0 +1,46 @@
+pipeline {
+
+  agent any
+
+  stages {
+
+	    stage('Cloning Git') {
+	      steps {
+	        git 'https://github.com/schogini/HOOK-TEST-P02-GITHUB.git'
+	      }
+	    }
+	    stage('Build the Image'){
+             steps{
+                script {
+                  sh "ls -l"
+                  sh "docker build -t grp2-web ."
+                  sh "./deploy-test.sh ${env.BUILD_ID} docker run -d -p 443:8123 grp2-web"
+                }
+              }
+ 
+	    }
+	    stage('Deploy Test Server') {
+	      steps{
+	        script {
+	          sh "ls -l"
+		  sh "docker build -t grp2-web ."
+	          sh "./deploy-test.sh ${env.BUILD_ID} docker run -d -p 443:8123 grp2-web"
+	        }
+	      }
+	    }
+	    stage('Testing image') {
+	      steps{
+	        script {
+	          sh "echo grp2 3333"
+	        }
+	      }
+	    }
+		stage('Pushing Image') {
+	      steps{
+	        script {
+	          sh "echo grp 4444"
+	        }
+	      }
+		}     
+	}
+}
