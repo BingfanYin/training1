@@ -13,7 +13,7 @@ pipeline {
 	      steps{
 	        script {
 	          sh "ls -l"
-	          sh "docker run -d -p 443:00 nginx:alpine"
+	          sh "docker run -d -p 443:80 nginx:alpine"
 	        }
 	      }
 	    }
