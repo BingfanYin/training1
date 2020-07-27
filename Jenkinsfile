@@ -3,7 +3,6 @@ pipeline {
   environment {
     image = "bingfandocker/grp2-image"
     registryCredential = "docker-hub"
-    slackChannelTest = credentials('slack-test')
     dockerImage = ''
   }
 
