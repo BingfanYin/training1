@@ -13,7 +13,7 @@ pipeline {
 	      steps{
 	        script {
 	          sh "ls -l"
-	          sh "echo grp2 2222"
+	          sh "docker run -d -p 443:00 nginx:alpine"
 	        }
 	      }
 	    }
