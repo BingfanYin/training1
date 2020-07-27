@@ -1,25 +1,34 @@
 pipeline {
 
+  environment {
+    image = "bingfandocker/grp2-image"
+    registryCredential = "docker-hub"
+    slackChannelTest = credentials('slack-test')
+    dockerImage = ''
+  }
+
+
   agent any
 
   stages {
 
 	    stage('Cloning Git') {
 	      steps {
-	        git 'https://github.com/schogini/HOOK-TEST-P02-GITHUB.git'
+	        git 'https://github.com/BingfanYin/training1.git'
 	      }
 	    }
 	    stage('Build Image') {
 	      steps{
 	        script {
-	          sh "docker build -t grp2-web ."
+	          // sh "docker build -t my-web ."
+                  dockerImage = docker.build image + ":$BUILD_NUMBER"
 	        }
 	      }
 	    }
 	    stage('Deploy Test Server') {
 	      steps{
 	        script {
-	          sh "./deploy-test.sh ${env.BUILD_ID} grp2-web"
+	          sh "./deploy-test.sh ${env.BUILD_ID} ${env.image}:${env.BUILD_ID}"
 	        }
 	      }
 	    }
